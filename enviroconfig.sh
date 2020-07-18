@@ -1,14 +1,17 @@
 #!/bin/sh
 # Script for setting up basic terminal functionalities
-sudo apt install neovim trash-cli
+sudo apt install neovim trash-cli wget
 
 # Installing Fuzzyfind
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # Downloading and installing nnn's release
-wget https://github.com/jarun/nnn/releases/download/v3.3/nnn_3.3-1_ubuntu20.04.amd64.deb
-sudo apt install -f ./nnn_3.3-1_ubuntu20.04.amd64.deb
+## Ubuntu 20.04 -- for local ubuntu 20.04 instances
+# wget https://github.com/jarun/nnn/releases/download/v3.3/nnn_3.3-1_ubuntu20.04.amd64.deb -O nnn.deb
+## Debian 10 -- for gcp debian 10 instances
+wget https://github.com/jarun/nnn/releases/download/v3.3/nnn_3.3-1_debian10.amd64.deb -O nnn.deb
+sudo apt install -f ./nnn.deb
 
 # Creating XDG_CONFIG_HOME if missing
 [ -d $HOME/.config ] || mkdir $HOME/.config
