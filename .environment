@@ -1,0 +1,19 @@
+# Here goes all your vars and PATH settings
+
+# This script uses wrapper functions to handle incompatible shell sintaxes
+# for exporting variables and PATH additions. Each wrapper should be defined
+# on the shell's config file (e.g.: .bashrc, config.fish, etc)
+
+# VARIABLES
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# TEXT EDITORS AND FILE MANAGERS
+export SUDO_EDITOR='/usr/bin/nvim'
+export VISUAL='/usr/bin/nvim'
+export EDITOR='/usr/bin/nvim'
+export PAGER='/usr/bin/less'
+export NNN_USE_EDITOR=1
+export NNN_TRASH=1     # Use 'trash-cli' instead of 'rm'
+export NNN_OPTS='odAeR'

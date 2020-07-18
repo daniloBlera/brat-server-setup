@@ -1,0 +1,26 @@
+# Put here all the aliases you want shared between different shells,
+# you can then source this script from your shells' config files
+
+# Shortcuts for configuration files
+alias al="$EDITOR $HOME/.aliases"
+alias ev="$EDITOR $HOME/.environment"
+
+alias cfbash="$EDITOR ~/.bashrc"
+alias cfnvim="$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
+
+# Commonly-used
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+
+alias ll='ls -AlFh'
+alias la='ls -AF'
+alias l1='ls -1F'
+alias ip='ip -c'
+
+alias f='fzf'
+alias .f='find . | fzf'
