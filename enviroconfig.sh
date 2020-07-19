@@ -6,7 +6,7 @@ sudo apt install neovim trash-cli wget
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-# Downloading and installing nnn's release
+# Downloading and installing nnn's release -- Uncomment the right one for your instance
 ## Ubuntu 20.04 -- for local ubuntu 20.04 instances
 # wget https://github.com/jarun/nnn/releases/download/v3.3/nnn_3.3-1_ubuntu20.04.amd64.deb -O nnn.deb
 ## Debian 10 -- for gcp debian 10 instances
