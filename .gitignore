@@ -1,0 +1,6 @@
+# Downloads
+*.tar.gz
+*.deb
+
+# Extracted Datasets
+BioNLP-OST-2019_BB-*_*
