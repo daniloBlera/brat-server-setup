@@ -1,6 +1,4 @@
-#!/bin/bash
-# Obs.: Using 'bash' instead of 'dash' due to some brace expansions
-#
+#!/bin/sh
 # Setup script for a BRAT annotator running on an Apache2 server
 # Installing the required packages
 sudo apt update && sudo apt upgrade
@@ -13,7 +11,8 @@ sudo ln -s /usr/bin/python2 /usr/bin/python
 mkdir BioNLP-2019
 find . -type f -name '*_BB-rel_*.zip' -exec unzip -d 'BioNLP-2019/BB-Rel' {} ';'
 find . -type f -name '*_BB-norm_*.zip' -exec unzip -d 'BioNLP-2019/BB-Norm' {} ';'
-cp {annotation,visual}.conf 'BioNLP-2019/BB-Rel/'
+cp annotation.conf 'BioNLP-2019/BB-Rel/'
+cp visual.conf 'BioNLP-2019/BB-Rel/'
 
 # Configuring the annotator
 ## Downloading and extracting the annotator files
@@ -22,7 +21,7 @@ tar xvf 'brat-v1.3_Crunchy_Frog.tar.gz'
 mv 'brat-v1.3_Crunchy_Frog' "$HOME/brat-pages"
 
 ## Install files
-cd "$HOME/brat-pages"
+cd "$HOME/brat-pages" || exit
 ./install.sh
 
 ## Copy the datasets
@@ -62,8 +61,9 @@ cd server/lib/ && unzip ujson-1.18.zip && cd ujson-1.18 && python setup.py build
 sudo a2enmod userdir
 
 ## Configure the user page for the annotator
-cd "$HOME/brat-server-setup"
-[ -f '/etc/apache2/mods-available/userdir.conf' ] && sudo mv /etc/apache2/mods-available/userdir.conf{,.bak}
+cd "$HOME/brat-server-setup" || exit
+conf_path='/etc/apache2/mods-available/userdir.conf'
+[ -f "$conf_path" ] && sudo mv "$conf_path" "$conf_path.bak"
 sudo cp ./userdir.conf /etc/apache2/mods-available/
 
 # Configuring the Apache server

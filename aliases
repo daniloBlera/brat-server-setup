@@ -2,11 +2,11 @@
 # you can then source this script from your shells' config files
 
 # Shortcuts for configuration files
-alias al="$EDITOR $HOME/.aliases"
-alias ev="$EDITOR $HOME/.environment"
+alias al='"$EDITOR" "$HOME/.aliases"'
+alias ev='"$EDITOR" "$HOME/.environment"'
 
-alias cfbash="$EDITOR ~/.bashrc"
-alias cfnvim="$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
+alias cfbash='"$EDITOR" "HOME/.bashrc"'
+alias cfnvim='"$EDITOR" "$XDG_CONFIG_HOME/nvim/init.vim"'
 
 # Commonly-used
 alias ls='ls --color=auto'
