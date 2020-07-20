@@ -21,16 +21,18 @@ sudo apt install -f ./nnn.deb
 cp init.vim $HOME/.config/nvim/
 
 # Helper func
+echo ''
 echo 'source_if_exists() {' >> $HOME/.bashrc
 echo '    [ -f "$1" ] && . "$1"' >> $HOME/.bashrc
 echo '}' >> $HOME/.bashrc
+echo ''
 
 [ -d $HOME/.config/nnn ] || mkdir -p $HOME/.config/nnn/misc/
 cp quitcd.sh $HOME/.config/nnn/misc/
 echo 'source_if_exists "$HOME/.config/nnn/misc/quitcd.sh"' >> $HOME/.bashrc
 
 # Setting basic aliases and environment variables
-cp .{environment,aliases} $HOME/
+cp .environment $Home/
+cp .aliases $HOME/
 echo 'source_if_exists "$HOME/.environment"' >> $HOME/.bashrc
 echo 'source_if_exists "$HOME/.aliases"' >> $HOME/.bashrc
-source $HOME/.bashrc

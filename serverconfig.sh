@@ -1,4 +1,6 @@
 #!/bin/bash
+# Obs.: Using 'bash' instead of 'dash' due to some brace expansions
+#
 # Setup script for a BRAT annotator running on an Apache2 server
 # Installing the required packages
 sudo apt update && sudo apt upgrade
@@ -26,10 +28,27 @@ cd "$HOME/brat-pages"
 ## Copy the datasets
 cp -r "$HOME/brat-server-setup/BioNLP-2019" 'data/'
 
-## Merge the annotation files
+## Merge '.a1' and '.a2' into a '.ann' annotation files
 find data -name '*.a1' -o -name '*.a2' -o -name '*.rel' -o -name '*.co' | tools/merge.py
 
-## Convert relation notation
+## Convert relation notation -- Overwriting the generated '.ann' files only
+## The dataset contains relations with the format
+##
+##		ID RELATION ENTITY1:ID1 ENTITY2:ID2
+##
+## But the annotator requires
+##
+##		ID RELATION Arg1:ID1 Arg2:ID2
+##
+## So the relations (on the generated '.ann' files)
+##
+##		ID Lives_In Microorganism:ID1 Location:ID2
+##		ID Exhibits Microorganism:ID1 Property:ID2
+##
+## Will be converted to
+##
+##		ID Lives_In Arg1:ID1 Arg2:ID2
+##		ID Exhibits Arg1:ID1 Arg2:ID2
 find data -type f -name '*.ann' -exec sed -i -e 's/Microorganism:/Arg1:/g' -e 's/Location:/Arg2:/g' -e 's/Property:/Arg2:/g' {} \;
 
 ## Configure the pages for serving -- Fix file ownership
