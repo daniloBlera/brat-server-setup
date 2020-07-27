@@ -1,8 +1,9 @@
 # BRAT Server Setup
-Just a couple of scripts to configure a working [BRAT annotator][brat] on a
-Debian 10 or Ubuntu 20.04 server through apache. Note that these will overwrite
-config files under `/etc/apache` so you probably should avoid running these
-scripts outside of a fresh vm install.
+Just a couple of scripts to configure a working
+[BRAT rapid annotation tool][brat] on a Debian 10 or Ubuntu 20.04 server
+through apache. Note that these will overwrite config files under
+`/etc/apache` so you probably should avoid running these scripts outside
+of a fresh vm install.
 
 I've tested this setup on a `f1-micro` compute engine on [Google Cloud][gcp]
 with the `debian-10-buster-v20200714` image.
