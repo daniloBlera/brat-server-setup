@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Just a simple script to replace non-breaking whitespaces in data
+'''Just a simple script to fix nbsp's and linebreaks on the dataset'''
 from argparse import ArgumentParser
 import os
+import re
 
 
 def has_ext(fname):
     '''Check if the argument is a text or annotation file'''
-    return fname.endswith(('.txt', 'ann'))
+    return fname.endswith(('.txt', 'a1', 'a2', 'ann'))
 
 
 def main(target_dir):
@@ -22,8 +23,17 @@ def main(target_dir):
         with open(fpath) as fd:
             text = fd.read()
 
-        if '\xa0' in text:
-            print(f'THE FILE "{fname}" CONTAINS NBSP, FIXING IT...')
+        if re.fullmatch(r'BB-rel-F-\d+-\d\d\d.txt', fname) is not None:
+            print(f'REMOVING NEWLINEWS FROM "{fname}"')
+            text = text.replace('\n', ' ')
+            text = re.sub(r'\s\s+', ' ', text)
+            text = text.strip()
+
+            with open(fpath, 'w') as fd:
+                fd.write(text + '\n')
+
+        elif '\xa0' in text:
+            print(f'THE FILE "{fname}" CONTAINS NBSP, FIXING')
             text = text.replace('\xa0', ' ')
             with open(fpath, 'w') as fd:
                 fd.write(text)
