@@ -24,10 +24,9 @@ def main(target_dir):
             text = fd.read()
 
         if re.fullmatch(r'BB-rel-F-\d+-\d\d\d.txt', fname) is not None:
-            print(f'REMOVING NEWLINEWS FROM "{fname}"')
-            text = text.replace('\n', ' ')
-            text = re.sub(r'\s\s+', ' ', text)
+            print(f'REPLACING NEWLINEWS ON "{fname}"')
             text = text.strip()
+            text = text.replace('\n', ' ')
 
             with open(fpath, 'w') as fd:
                 fd.write(text + '\n')
@@ -35,6 +34,7 @@ def main(target_dir):
         elif '\xa0' in text:
             print(f'THE FILE "{fname}" CONTAINS NBSP, FIXING')
             text = text.replace('\xa0', ' ')
+
             with open(fpath, 'w') as fd:
                 fd.write(text)
 
