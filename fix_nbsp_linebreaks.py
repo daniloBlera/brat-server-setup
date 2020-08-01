@@ -44,7 +44,7 @@ def main(target_dir):
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--target-dir', type=str, default=None,
-                        help="The directory to fix npsp's")
+                        help="The files' root directory path")
 
     args = parser.parse_args()
     main(args.target_dir)
