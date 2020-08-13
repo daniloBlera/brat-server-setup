@@ -1,6 +1,6 @@
 #!/bin/sh
 # Script for setting up basic terminal functionalities
-sudo apt install neovim trash-cli wget
+sudo apt install neovim trash-cli wget zsh tmux
 
 # Installing Fuzzyfind
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -38,7 +38,8 @@ cp 'quitcd.sh' "$NNN_MISC/"
 echo 'source_if_exists "$HOME/.config/nnn/misc/quitcd.sh"' >> "$HOME/.bashrc"
 
 # Setting basic aliases and environment variables
+cp 'tmux.conf' "$HOME/.tmux.conf"
 cp 'environment' "$HOME/.environment"
 cp 'aliases' "$HOME/.aliases"
-echo 'source_if_exists "$HOME/.environment"' >> "$HOME/.bashrc"
-echo 'source_if_exists "$HOME/.aliases"' >> "$HOME/.bashrc"
+cp 'zshrc' "$HOME/.zshrc"
+sudo chsh -s '/bin/zsh'
